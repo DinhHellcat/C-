@@ -33,7 +33,8 @@ cout<<*min_element(a,a+n);
 //Đảo chuỗi
 reverse(s.begin(), s.end());
 
-
+//điền từ 1 đến n phần tử của vector
+iota(a.begin(), a.end(), 1);
 
 //Ước của 1 số
 for(long i=1;i<=n/i;i++)
@@ -111,6 +112,44 @@ int longestIncreasingSubsequenceDP(const vector<int>& arr) {
 
     return *max_element(dp.begin(), dp.end()); // Return the maximum value in dp array
 }
+
+//so nguyen to
+
+//tao vector isPrime
+const int limit = 100000
+vector<bool> isPrime(limit + 1,true);
+void progress()
+{
+    isPrime[0]=isPrime[1]=false;
+    for(long long i=0;i*i<=limit;i++)
+        if(isPrime[i])
+            for(long long j=i*i;j*j<=limit;j+=i)
+                isPrime[j]=false;
+}
+
+//tao vector cac so ngto
+const int limit = 100000;
+vector<bool> isPrime(limit + 1, true);
+vector<int> primes;
+
+void sieve() {
+    isPrime[0] = isPrime[1] = false;
+    for (int i = 2; i <= limit; i++) {
+        if (isPrime[i]) {
+            primes.push_back(i);
+            for (int j = i * 2; j <= limit; j += i) {
+                isPrime[j] = false;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+//LIS nhưng dùng các loại kĩ thuật khác DP
 //Using lower_bound and Binary Search
 int longestIncreasingSubsequenceBinarySearch(const vector<int>& arr) {
     vector<int> lis;

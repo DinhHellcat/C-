@@ -11,7 +11,10 @@ int longestIncreasingSubsequenceDP(const vector<int>& arr) {
         for (int j = 0; j < i; j++) {
             if (arr[i] > arr[j]) {
                 dp[i] = max(dp[i], dp[j] + 1);
-                cout<<i<<" "<<j<<endl;
+                cout<<i<<" "<<j<<" "<<"dp["<<i<<"]="<<dp[i]<<endl;
+                for(int i=0;i<sizeof dp / sizeof(int);i++)
+                    cout<<dp[i]<<" ";
+                cout<<endl;
             }
         }
     }
